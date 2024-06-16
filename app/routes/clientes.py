@@ -8,14 +8,14 @@ def get_clientes():
     clientes = Cliente.query.all()
     clientes_list = []
     for cliente in clientes:
-        cliente_dict = {
+        cliente_data = {
             'id_cliente': cliente.id_cliente,
             'nombre': cliente.nombre,
             'apellido': cliente.apellido,
             'correo_electronico': cliente.correo_electronico,
-            'fecha_registro': cliente.fecha_registro.strftime('%Y-%m-%d'),
+            'contrasenia': cliente.contrasenia,
+            'fecha_registro': cliente.fecha_registro,
             'id_tipocliente': cliente.id_tipocliente
         }
-        clientes_list.append(cliente_dict)
-    
-    return jsonify({'clientes': clientes_list})
+        clientes_list.append(cliente_data)
+    return jsonify(clientes_list)
