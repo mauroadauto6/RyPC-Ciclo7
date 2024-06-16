@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  bdd-tikafarma:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: tikafarmadb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+  api-tikafarma:
+    build: ./app
+    depends_on:
+      - bdd-tikafarma
+    ports:
+      - "5000:5000"
+
+volumes:
+  postgres_data:
