@@ -1,13 +1,7 @@
-from . import db
+from __init__ import db
 
 class Proveedor(db.Model):
-    __tablename__ = 'Proveedor'
+    __tablename__ = 'proveedor'
     __table_args__ = {'extend_existing': True}
-    id_proveedor = db.Column(db.Integer, db.ForeignKey('Proveedor.id_proveedor'), primary_key=True)
-    id_producto = db.Column(db.Integer, db.ForeignKey('Producto.id_producto'), primary_key=True)
-
-    def serialize(self):
-        return {
-            'id_proveedor': self.id_proveedor,
-            'id_producto': self.id_producto
-        }
+    id_proveedor = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(255), nullable=False)

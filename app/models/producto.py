@@ -1,21 +1,12 @@
-from . import db
+from __init__ import db
 
 class Producto(db.Model):
-    __tablename__ = 'Producto'
+    __tablename__ = 'producto'
     __table_args__ = {'extend_existing': True}
-    id_detalle_comprobante = db.Column(db.Integer, primary_key=True)
+    id_producto = db.Column(db.Integer, primary_key=True)
+    nombre_producto = db.Column(db.String(255), nullable=False)
+    fecha_registro = db.Column(db.Date, nullable=False)
+    fecha_vencimiento = db.Column(db.Date, nullable=False)
+    descripcion = db.Column(db.Text, nullable=False)
+    id_categoria = db.Column(db.Integer, db.ForeignKey('categoriasproducto.id_categoria'), nullable=False)
     precio = db.Column(db.Float, nullable=False)
-    cantidad = db.Column(db.Integer, nullable=False)
-    id_inventario_almacen = db.Column(db.Integer, db.ForeignKey('InventarioAlmacen.id_inventario_almacen'), nullable=False)
-    id_boletaventa = db.Column(db.Integer, db.ForeignKey('ComprobanteVenta.id_comprobante'), nullable=False)
-    tipocomprobante = db.Column(db.String(255), nullable=False)
-
-    def serialize(self):
-        return {
-            'id_detalle_comprobante': self.id_detalle_comprobante,
-            'precio': self.precio,
-            'cantidad': self.cantidad,
-            'id_inventario_almacen': self.id_inventario_almacen,
-            'id_boletaventa': self.id_boletaventa,
-            'tipocomprobante': self.tipocomprobante
-        }
