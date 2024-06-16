@@ -12,7 +12,7 @@ CREATE TABLE Almacen (
 
 -- Table: CarritoCompra
 CREATE TABLE CarritoCompra (
-    id_carrito int  NOT NULL,
+    id_carrito SERIAL  NOT NULL,
     id_cliente varchar(255)  NOT NULL,
     id_inventario_almacen int  NOT NULL,
     cantidad int  NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE Cliente (
 
 -- Table: ComprobanteVenta
 CREATE TABLE ComprobanteVenta (
-    id_comprobante int  NOT NULL,
+    id_comprobante SERIAL NOT NULL,
     fecha_venta date  NOT NULL,
     id_empleado int  NOT NULL,
     id_cliente varchar(8)  NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE ComprobanteVenta (
 
 -- Table: DetalleComprobante
 CREATE TABLE DetalleComprobante (
-    id_detalle_comprobante int  NOT NULL,
+    id_detalle_comprobante SERIAL  NOT NULL,
     precio float  NOT NULL,
     cantidad int  NOT NULL,
     id_inventario_almacen int  NOT NULL,
@@ -289,7 +289,7 @@ INSERT INTO Empleado (id_empleado, nombre, apellido, id_sede) VALUES
 (1, 'Carlos', 'Lopez', 1),
 (2, 'Ana', 'Martinez', 2);
 
-INSERT INTO ComprobanteVenta (id_comprobante, fecha_venta, id_empleado, id_cliente) VALUES
+/*INSERT INTO ComprobanteVenta (id_comprobante, fecha_venta, id_empleado, id_cliente) VALUES
 (1, '2024-06-14', 1, 'C001'),
 (2, '2024-06-14', 2, 'C002');
 
@@ -302,4 +302,4 @@ INSERT INTO DetalleComprobante (id_detalle_comprobante, precio, cantidad, id_inv
 INSERT INTO CarritoCompra (id_carrito, id_cliente, id_inventario_almacen, cantidad, fecha_creacion) VALUES
 (1, 'C001', 1, 2, '2024-06-14'),
 (2, 'C001', 2, 1, '2024-06-14'),
-(3, 'C002', 3, 3, '2024-06-14');
+(3, 'C002', 3, 3, '2024-06-14');*/
