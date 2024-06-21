@@ -9,7 +9,7 @@ class Cliente(db.Model):
     correo_electronico = db.Column(db.String(255), nullable=False, unique=True)
     contrasenia = db.Column(db.String(255), nullable=False)
     fecha_registro = db.Column(db.Date, nullable=False)
-    id_tipocliente = db.Column(db.Integer, db.ForeignKey('TipoCliente.id_tipocliente'), nullable=False)
+    id_tipocliente = db.Column(db.Integer, db.ForeignKey('tipocliente.id_tipocliente'), nullable=False)
 
     def __repr__(self):
         return f'<Cliente {self.nombre} {self.apellido}>'
