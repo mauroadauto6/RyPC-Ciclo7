@@ -1,0 +1,16 @@
+.navbar {
+    background-color: #28a745;
+    height: 120px;
+}
+
+.left img{
+    max-width: 230px;
+}
+
+.navbar .navbar-nav .nav-link{
+    color: white;
+}
+
+.navbar .nav-item:hover .nav-link{
+    color: var(--color3);
+}

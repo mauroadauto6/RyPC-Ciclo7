@@ -1,0 +1,11 @@
+.footer {
+    background-color: var(--color2);
+}
+
+.footer h5 {
+    color: var(--color3);
+}
+
+.footer p {
+    color: white;
+}
