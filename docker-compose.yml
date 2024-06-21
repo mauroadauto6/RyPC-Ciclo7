@@ -19,6 +19,13 @@ services:
       - bdd-tikafarma
     ports:
       - "5000:5000"
+  
+  front-tikafarma:
+    build: ./front
+    ports:
+      - "3000:80"
+    depends_on:
+      - api-tikafarma
 
 volumes:
   postgres_data:
