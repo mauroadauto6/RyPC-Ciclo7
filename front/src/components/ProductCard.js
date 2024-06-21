@@ -14,7 +14,7 @@ const ProductCard = ({ image, title, description, price }) => {
           <a className="nav-link" href="#!">
             <ShoppingCartIcon style={{
               color: '#FF6128',
-              fontSize: '50'
+              fontSize: '51'
             }}/>
           </a>
         </div>
