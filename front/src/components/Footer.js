@@ -37,7 +37,7 @@ const Footer = () => {
                             <a href="#!" className="text-white">Política de Devoluciones</a>
                         </li>
                         <li>
-                            <a href="#!" className="text-white">Términos y Condiciones</a>
+                            <a href="#!" className="text-white">Terminos y Condiciones</a>
                         </li>
                     </ul>
                 </div>
