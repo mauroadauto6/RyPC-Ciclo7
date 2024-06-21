@@ -11,7 +11,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className='d-flex align-items-center left ml-auto mr-auto'>
             <a className="navbar-brand" href="#!">
-                <Link to='/'><img src={Banner} alt='tikarfarma banner'/></Link>
+                <Link to='/'><img src={Banner} alt='tikarfarma_banner'/></Link>
             </a>
         </div>
         <div className='d-flex align-items-center right ml-auto mr-auto'>
