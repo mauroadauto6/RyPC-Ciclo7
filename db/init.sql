@@ -88,6 +88,7 @@ CREATE TABLE Producto (
     descripcion text  NOT NULL,
     id_categoria int  NOT NULL,
     precio float  NOT NULL,
+    url_imagen varchar(255) NOT NULL,
     CONSTRAINT Producto_pk PRIMARY KEY (id_producto)
 );
 
@@ -256,15 +257,27 @@ INSERT INTO TipoCliente (id_tipocliente, nombre_tipocliente) VALUES
 ('C001', 'Juan', 'Perez', 'juan.perez@example.com', 'password123', '2024-06-14', 1),
 ('C002', 'Maria', 'Gomez', 'maria.gomez@example.com', 'password456', '2024-06-14', 2);*/
 
-INSERT INTO Producto (id_producto, nombre_producto, fecha_registro, fecha_vencimiento, descripcion, id_categoria, precio) VALUES
-(1, 'Aceite de Coco', '2024-01-01', '2025-01-01', 'Aceite de coco orgánico', 1, 25.50),
-(2, 'Jabón de Lavanda', '2024-01-01', '2025-01-01', 'Jabón artesanal de lavanda', 3, 15.75),
-(3, 'Shampoo de Manzanilla', '2024-01-01', '2025-01-01', 'Shampoo natural de manzanilla', 4, 30.00),
-(4, 'Stevia en Polvo', '2024-01-01', '2025-01-01', 'Edulcorante natural de stevia', 5, 20.00),
-(5, 'Té de Menta', '2024-01-01', '2025-01-01', 'Infusión de hojas de menta', 6, 10.00),
-(6, 'Crema Facial', '2024-01-01', '2025-01-01', 'Crema hidratante para la cara', 3, 18.00),
-(7, 'Exfoliante Corporal', '2024-01-01', '2025-01-01', 'Exfoliante corporal con azúcar', 3, 22.00),
-(8, 'Mascarilla de Arcilla', '2024-01-01', '2025-01-01', 'Mascarilla facial de arcilla', 3, 12.00);
+INSERT INTO Producto (id_producto, nombre_producto, fecha_registro, fecha_vencimiento, descripcion, id_categoria, precio, url_imagen) VALUES
+(1, 'Aceite de Coco', '2024-01-01', '2025-01-01', 'Aceite de coco orgánico', 1, 25.50, 'https://tikafarma.com/cdn/shop/products/NewEcovalle26_400x.jpg'),
+(2, 'Jabón de Lavanda', '2024-01-01', '2025-01-01', 'Jabón artesanal de lavanda', 3, 15.75, 'https://tikafarma.com/cdn/shop/products/jabon-lavanda-1_400x.jpg'),
+(3, 'Shampoo de Manzanilla', '2024-01-01', '2025-01-01', 'Shampoo natural de manzanilla', 4, 30.00, 'https://tikafarma.com/cdn/shop/files/shampoo-natural-manzanilla-binatural-1_d82c5459-b988-4db0-92f9-e154fbfccce1_400x.jpg'),
+(4, 'Stevia y Yacón en Polvo', '2024-01-01', '2025-01-01', 'Edulcorante natural de stevia y yacón', 5, 20.00, 'https://tikafarma.com/cdn/shop/products/stevia-ecofit-1_e513159f-e083-49e0-8bd7-ebcb21988b09_400x.jpg?'),
+(5, 'Té Verde Matcha', '2024-01-01', '2025-01-01', 'Infusión de Té Verde Matcha en polvo', 6, 10.00, 'https://tikafarma.com/cdn/shop/files/te-matcha-100g_400x.jpg'),
+(6, 'Crema Facial', '2024-01-01', '2025-01-01', 'Crema hidratante para la cara', 3, 18.00, 'https://tikafarma.com/cdn/shop/products/Crema-facial-botica-natural-antiarrugas-1_400x.jpg'),
+(7, 'Exfoliante de Rostro', '2024-01-01', '2025-01-01', 'Exfoliante de Rostro con Arroz Amazónico', 3, 22.00, 'https://tikafarma.com/cdn/shop/products/Exfoliante-de-Rostro-25g_400x.jpg'),
+(8, 'Mascarilla de Arcilla', '2024-01-01', '2025-01-01', 'Mascarilla facial de arcilla verde', 3, 12.00, 'https://tikafarma.com/cdn/shop/products/Arcilla-verde-1_fb70b45c-cf8e-4ea9-b74a-1061301ef00e_400x.jpg'),
+(9, 'Aceite de Almendras', '2024-01-01', '2025-01-01', 'Aceite de almendras puro', 1, 28.00, 'https://tikafarma.com/cdn/shop/products/aceite-almendras-naturally-divine_400x.jpg'),
+(10, 'Café en Cápsulas', '2024-01-01', '2025-01-01', 'Café verde en cápsulas', 2, 65.00, 'https://tikafarma.com/cdn/shop/products/cafe-verde-capsulas_400x.jpg'),
+(11, 'Miel de Abeja', '2024-01-01', '2025-01-01', 'Miel de abeja pura', 5, 22.50, 'https://tikafarma.com/cdn/shop/products/IMG-20201029-WA0019_400x.jpg'),
+(12, 'Infusión de Albahaca Negra', '2024-01-01', '2025-01-01', 'Infusión 100% de Albahaca Negra', 6, 15.00, 'https://tikafarma.com/cdn/shop/files/sumak_takiwasi_respira_mejor_infusion_400x.jpg'),
+(13, 'Aceite de Jojoba', '2024-01-01', '2025-01-01', 'Aceite de jojoba natural', 1, 32.00, 'https://tikafarma.com/cdn/shop/products/aceite-jojoba_21103511-75e5-45f2-85b0-8b83fdc67dc2_400x.jpg'),
+(14, 'Jabón de Miel', '2024-01-01', '2025-01-01', 'Jabón artesanal de miel, leche y avena', 3, 17.75, 'https://tikafarma.com/cdn/shop/products/Jabon-miel-abeja-humectante-ecolmena-1_400x.jpg'),
+(15, 'Shampoo de Argán', '2024-01-01', '2025-01-01', 'Shampoo natural sólido de argán', 4, 35.00, 'https://tikafarma.com/cdn/shop/files/shampoo-solido-rizos-definidos-faria-1_400x.jpg'),
+(16, 'Azúcar de Coco', '2024-01-01', '2025-01-01', 'Edulcorante natural de coco', 5, 20.00, 'https://tikafarma.com/cdn/shop/products/azucar-coco-naturally-divine_400x.jpg'),
+(17, 'Té Verde', '2024-01-01', '2025-01-01', 'Infusión de hojas de té verde', 6, 12.00, 'https://tikafarma.com/cdn/shop/products/hojas-te-verde_400x.jpg'),
+(18, 'Crema de Manos', '2024-01-01', '2025-01-01', 'Crema hidratante para manos', 3, 19.00, 'https://tikafarma.com/cdn/shop/files/Aclara-T-Scrub-Exfoliante-LaCooper-Tikafarma_400x.jpg'),
+(19, 'Crema Facial', '2024-01-01', '2025-01-01', 'Exfoliante facial con jalea real', 3, 24.00, 'https://tikafarma.com/cdn/shop/products/crema-facial-jalea-real-miel_400x.jpg'),
+(20, 'Mascarilla de Carbón', '2024-01-01', '2025-01-01', 'Mascarilla facial de carbón activado', 3, 14.00, 'https://tikafarma.com/cdn/shop/products/Carbon-activado-coco_400x.jpg');
 
 INSERT INTO Proveedor (id_proveedor, nombre) VALUES
 (1, 'Proveedor A'),
