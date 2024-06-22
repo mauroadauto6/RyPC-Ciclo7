@@ -10,3 +10,4 @@ class Producto(db.Model):
     descripcion = db.Column(db.Text, nullable=False)
     id_categoria = db.Column(db.Integer, db.ForeignKey('categoriasproducto.id_categoria'), nullable=False)
     precio = db.Column(db.Float, nullable=False)
+    url_imagen = db.Column(db.String(255), nullable=False)
