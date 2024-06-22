@@ -13,7 +13,7 @@ CREATE TABLE Almacen (
 -- Table: CarritoCompra
 CREATE TABLE CarritoCompra (
     id_carrito SERIAL  NOT NULL,
-    id_cliente varchar(255)  NOT NULL,
+    id_cliente int  NOT NULL,
     id_inventario_almacen int  NOT NULL,
     cantidad int  NOT NULL,
     fecha_creacion date  NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE CategoriasProducto (
 
 -- Table: Cliente
 CREATE TABLE Cliente (
-    id_cliente varchar(255)  NOT NULL,
+    id_cliente SERIAL  NOT NULL,
     nombre varchar(255)  NOT NULL,
     apellido varchar(255)  NOT NULL,
     correo_electronico varchar(255)  NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE ComprobanteVenta (
     id_comprobante SERIAL NOT NULL,
     fecha_venta date  NOT NULL,
     id_empleado int  NOT NULL,
-    id_cliente varchar(8)  NOT NULL,
+    id_cliente int  NOT NULL,
     CONSTRAINT ComprobanteVenta_pk PRIMARY KEY (id_comprobante)
 );
 
@@ -252,16 +252,19 @@ INSERT INTO TipoCliente (id_tipocliente, nombre_tipocliente) VALUES
 (1, 'Regular'),
 (2, 'Jurídica');
 
-INSERT INTO Cliente (id_cliente, nombre, apellido, correo_electronico, contrasenia, fecha_registro, id_tipocliente) VALUES
+/*INSERT INTO Cliente (id_cliente, nombre, apellido, correo_electronico, contrasenia, fecha_registro, id_tipocliente) VALUES
 ('C001', 'Juan', 'Perez', 'juan.perez@example.com', 'password123', '2024-06-14', 1),
-('C002', 'Maria', 'Gomez', 'maria.gomez@example.com', 'password456', '2024-06-14', 2);
+('C002', 'Maria', 'Gomez', 'maria.gomez@example.com', 'password456', '2024-06-14', 2);*/
 
 INSERT INTO Producto (id_producto, nombre_producto, fecha_registro, fecha_vencimiento, descripcion, id_categoria, precio) VALUES
 (1, 'Aceite de Coco', '2024-01-01', '2025-01-01', 'Aceite de coco orgánico', 1, 25.50),
 (2, 'Jabón de Lavanda', '2024-01-01', '2025-01-01', 'Jabón artesanal de lavanda', 3, 15.75),
 (3, 'Shampoo de Manzanilla', '2024-01-01', '2025-01-01', 'Shampoo natural de manzanilla', 4, 30.00),
 (4, 'Stevia en Polvo', '2024-01-01', '2025-01-01', 'Edulcorante natural de stevia', 5, 20.00),
-(5, 'Té de Menta', '2024-01-01', '2025-01-01', 'Infusión de hojas de menta', 6, 10.00);
+(5, 'Té de Menta', '2024-01-01', '2025-01-01', 'Infusión de hojas de menta', 6, 10.00),
+(6, 'Crema Facial', '2024-01-01', '2025-01-01', 'Crema hidratante para la cara', 3, 18.00),
+(7, 'Exfoliante Corporal', '2024-01-01', '2025-01-01', 'Exfoliante corporal con azúcar', 3, 22.00),
+(8, 'Mascarilla de Arcilla', '2024-01-01', '2025-01-01', 'Mascarilla facial de arcilla', 3, 12.00);
 
 INSERT INTO Proveedor (id_proveedor, nombre) VALUES
 (1, 'Proveedor A'),
