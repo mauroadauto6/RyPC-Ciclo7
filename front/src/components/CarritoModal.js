@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Box, Typography, Button, IconButton, TextField, Snackbar } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+
 import axios from 'axios';
+
 import { useAuth } from '../context/AuthContext';
+import CheckoutForm from './CheckoutForm';
+
 import API_BASE_URL from '../ApiConfig';
 
 const CarritoModal = ({ open, handleClose }) => {
@@ -10,6 +14,7 @@ const CarritoModal = ({ open, handleClose }) => {
   const [carrito, setCarrito] = useState([]);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
 
   useEffect(() => {
     if (authUser) {
@@ -46,21 +51,13 @@ const CarritoModal = ({ open, handleClose }) => {
   };
 
   const handleComprar = async () => {
-    try {
-      const response = await axios.post(`${API_BASE_URL}/comprar`, {
-        id_cliente: authUser.id_cliente,
-        carrito
-      });
-      if (response.status === 201) {
-        setSnackbarMessage('Compra realizada exitosamente');
-        setSnackbarOpen(true);
-        handleClose();
-        setCarrito([]);
-      }
-    } catch (error) {
-      setSnackbarMessage('Error al realizar la compra');
-      setSnackbarOpen(true);
-    }
+    setCheckoutOpen(true);
+  };
+
+  const handleCheckoutClose = () => {
+    setCheckoutOpen(false);
+    // Limpia el carrito después de que se confirme la compra
+    setCarrito([]);
   };
 
   const style = {
@@ -104,6 +101,11 @@ const CarritoModal = ({ open, handleClose }) => {
           </Button>
         </Box>
       </Modal>
+      {checkoutOpen && (
+        <Modal open={checkoutOpen} onClose={() => setCheckoutOpen(false)}>
+          <CheckoutForm carrito={carrito} handleClose={handleCheckoutClose} />
+        </Modal>
+      )}
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={6000}
