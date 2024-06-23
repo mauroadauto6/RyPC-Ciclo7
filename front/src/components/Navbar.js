@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -10,12 +10,17 @@ import PersonIcon from '@mui/icons-material/Person';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import AuthModal from './AuthModal';
+import CarritoModal from './CarritoModal'
 
 const Navbar = () => {
-  const [showAuthModal, setShowAuthModal] = useState(false);
 
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const handleAuthModalClose = () => setShowAuthModal(false);
   const handleAuthModalShow = () => setShowAuthModal(true);
+
+  const [showCarritoModal, setShowCarritoModal] = useState(false);
+  const handleCarritoModalClose = () => setShowCarritoModal(false);
+  const handleCarritoModalShow = () => setShowCarritoModal(true);
 
   const { authUser, logout } = useAuth();
 
@@ -48,13 +53,14 @@ const Navbar = () => {
                 </li>
               )}
               <li className="nav-item ml-1">
-                <button className="nav-link btn"><ShoppingCartIcon fontSize="large" /> Carrito</button>
+                <button className="nav-link btn" onClick={handleCarritoModalShow}><ShoppingCartIcon fontSize="large" /> Carrito</button>
               </li>
             </ul>
           </div>
         </div>
       </nav>
       <AuthModal open={showAuthModal} handleClose={handleAuthModalClose} />
+      <CarritoModal open={showCarritoModal} handleClose={handleCarritoModalClose} />
     </>
   );
 };
