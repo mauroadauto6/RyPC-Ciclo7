@@ -45,6 +45,7 @@ const AuthModal = ({ open, handleClose }) => {
         });
         if (response.status === 200) {
           setAuthUser(response.data.user);
+          localStorage.setItem('cliente_id', response.data.id_cliente);
           setSnackbarMessage('Bienvenid@');
           setSnackbarOpen(true);
           navigate('/');
