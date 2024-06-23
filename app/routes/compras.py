@@ -28,41 +28,16 @@ def realizar_compra():
     db.session.add(nuevo_comprobante)
     db.session.commit()
 
-    for item in carrito:
-        id_inventario_almacen = item['id_inventario_almacen']
-        cantidad = item['cantidad']
-
-        # Verificar el inventario
-        inventario = InventarioAlmacen.query.filter_by(id_inventario_almacen=id_inventario_almacen).first()
-        if not inventario or inventario.stock_producto < cantidad:
-            return jsonify({'error': f'Stock insuficiente para el producto en inventario {id_inventario_almacen}'}), 400
-
-        # Actualizar el stock del inventario
-        inventario.stock_producto -= cantidad
+    try:
+        # Eliminar los productos del carrito del cliente después de realizar la compra
+        CarritoCompra.query.filter_by(id_cliente=id_cliente).delete()
         db.session.commit()
 
-        # Crear el detalle del comprobante
-        nuevo_detalle = DetalleComprobante(
-            precio=inventario.precio_inventario,
-            cantidad=cantidad,
-            id_inventario_almacen=id_inventario_almacen,
-            id_boletaventa=nuevo_comprobante.id_comprobante,
-            tipocomprobante='Boleta'  # Asumimos que el tipo de comprobante es 'Boleta'
-        )
-        db.session.add(nuevo_detalle)
-        db.session.commit()
+        return jsonify({'message': 'Compra realizada exitosamente'}), 201
 
-        # Agregar al carrito de compra del cliente
-        nuevo_carrito = CarritoCompra(
-            id_cliente=id_cliente,
-            id_inventario_almacen=id_inventario_almacen,
-            cantidad=cantidad,
-            fecha_creacion=datetime.now()
-        )
-        db.session.add(nuevo_carrito)
-        db.session.commit()
-
-    return jsonify({'message': 'Compra realizada exitosamente'}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': 'Error al realizar la compra'}), 500
 
 
 # GET COMPRAS
