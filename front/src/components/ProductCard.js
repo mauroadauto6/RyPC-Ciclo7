@@ -70,10 +70,12 @@ const ProductCard = ({ image, title, description, price, id_inventario_almacen }
         </div>
       </div>
       <Snackbar
+        sx={{background:'#FF6128'}}
         open={snackbarOpen}
         autoHideDuration={6000}
         onClose={() => setSnackbarOpen(false)}
         message={snackbarMessage}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       />
     </>
   );

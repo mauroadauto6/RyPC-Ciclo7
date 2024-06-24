@@ -135,10 +135,12 @@ const AuthModal = ({ open, handleClose }) => {
         </Box>
       </Modal>
       <Snackbar
+        sx={{background:'#FF6128'}}
         open={snackbarOpen}
         autoHideDuration={6000}
         onClose={() => setSnackbarOpen(false)}
         message={snackbarMessage}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       />
     </>
   );
